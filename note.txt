@@ -1,0 +1,15 @@
+<section id='about'>
+          <div className='parent '>
+            <div className='flex flex-row gap-96 mt-20 ml-5 border-b-2 border-[#80E3FF] mr-5'>
+              <div className='about-items flex-col'>
+                <span className=' text-[#80E3FF] text-4xl font-serif font-bold'>About Me</span>
+                <br/>
+                <br/>
+                <span className=' block font-medium text-[#6E6D6D] font-serif text-1xl'>I am Harris, a 16 year old student living in Denpasar. I started learning coding when I was in high school.<br/> I'm learning to make websites and make a simple Memory Game with my own code. Since then, I became <br /> more and more interested and started learning more stuffs, for example Javascript Games using Phaser and also<br/> Web Developmen.</span>
+                <br />
+                <span className='font-medium text-[#6E6D6D] text-1xl'>Name: <span className='font-bold'>Achmad Harris Hidayat Abdilah</span></span>
+              </div>
+              <img src="/foto_pelajar.jpg" alt="Foto Harris" width={243} height={260} className="mb-6" />
+            </div>
+          </div>
+        </section>
