@@ -13,3 +13,86 @@
             </div>
           </div>
         </section>
+
+
+<section id="project">
+          <div className="parent">
+            <div className="flex flex-row gap-96 mt-6 ml-5 mr-5 border-b-2 border-[#80E3FF]">
+              <div className="project-items flex-col">
+                <span className="text-[#80E3FF] text-4xl font-bold">
+                  Projects
+                </span>
+                <br />
+                <br />
+
+                <div className="project-container">
+                  <div className="project flex">
+                    <img
+                      src="/snake.png"
+                      alt="snake"
+                      className=" w-[450px] h-[260px]"
+                    />
+                    <span className="font-medium text-[#6E6D6D] text-1xl indent-0  p-4">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Mollitia blanditiis dolorem eos explicabo, alias provident
+                      quod, <br />
+                      tempora sunt commodi officia voluptatem excepturi
+                      corporis, architecto necessitatibus id praesentium vel
+                      distinctio in!
+                    </span>
+                  </div>
+                  <br />
+                  <div className="project flex mb-6">
+                    <img
+                      src="/sahara.png "
+                      alt="sahara"
+                      className=" w-[450px] h-[260px]"
+                    />
+                    <span className="font-medium text-[#6E6D6D] text-1xl inset-0 p-4">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      A consequuntur quae laudantium amet nam possimus iure
+                      maxime eos eum, eius iste alias. Iure natus sunt harum
+                      aliquam fugiat? Alias, explicabo!
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="contact h-[90vh]">
+          <div className="flex flex-row gap-96 ml-5 mr-5 mt-6">
+            <span className=" text-[#80E3FF] text-4xl font-bold ">Contact</span>
+            <br />
+            <br />
+            <div className="form-container">
+              <div className="input-container">
+                <div className="form-input">
+                  <input type="text" className="input-item" name="name" />
+                  <label htmlFor="name">Name</label>
+                </div>
+              </div>
+              <div className="input-container">
+                <div className="form-input">
+                  <input type="text" className="input-item" name="city" />
+                  <label htmlFor="city">City</label>
+                </div>
+              </div>
+              <div className="">
+                <div className="">
+                  <input type="email" className="" name="email" />
+                  <label htmlFor="email"></label>
+                </div>
+              </div>
+              <div className="">
+                <div className="">
+                  <textarea name="message" id="" cols="52" rows="8"></textarea>
+                  <label htmlFor="message" className="">
+                    Message
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>

@@ -5,7 +5,14 @@ module.exports = {
   darkMode: true,
   theme: {
     extend: {
-      
+      screens: {
+        "phone-lg": {
+            max: "900px",
+        },
+        phone: {
+            max: "768px",
+        },
+    },
     },
   },
   plugins: [],

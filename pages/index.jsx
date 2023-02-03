@@ -2,6 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { Poppins } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper";
+import useAnimateSlide from "@/lib/slide";
+import { useState } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,6 +13,14 @@ const poppins = Poppins({
 });
 
 export default function Home() {
+  useAnimateSlide();
+  let [isNavOpen, setIsNavOpen] = useState(false);
+
+  function handleHamburger(e) {
+    setIsNavOpen(!isNavOpen);
+    console.log(isNavOpen);
+  }
+
   return (
     <>
       <Head>
@@ -25,39 +37,60 @@ export default function Home() {
         />
       </Head>
 
-      <main className={`${styles.main} text-white`} style={poppins.style}>
+      <main
+        className={`${styles.main}  main overflow-x-hidden`}
+        style={poppins.style}
+      >
         <header className="min-h-screen relative isolate w-full grid place-items-center">
           <div className="bg-pink-900 h-[60%] absolute left-0 top-0 right-0 z-[-1]"></div>
-          <nav className="w-full absolute left-0 right-0 top-0">
-            <div className="container py-3  w-full flex justify-between items-center">
-              <div className="text-white text-xl font-regular">Harris</div>
+          <nav className="w-full absolute top-0 phone:m">
+            <div className="container py-3 isolate  w-full flex justify-between items-center relative">
+              <div className="text-white text-xl font-regular phone:pl-4">Harris</div>
 
-              <div className="nav__items flex gap-2">
+              <div
+                className={`nav__items  phone:z-[-1] transition-all duration-500 flex gap-2 phone:w-full phone:absolute left-0 right-0 top-0 phone:flex-col px-4 ${
+                  isNavOpen
+                    ? "phone:top-full phone:opacity-100"
+                    : "phone:opacity-0"
+                }`}
+              >
                 <a
-                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150"
+                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150 text-white"
                   href="#about"
+                  data-slide="right"
                 >
                   About
                 </a>
                 <a
-                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150"
+                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150 text-white"
                   href="#resume"
+                  data-slide="right"
                 >
                   Resume
                 </a>
                 <a
-                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150"
+                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150 text-white"
                   href="#project"
+                  data-slide="right"
                 >
                   Project
                 </a>
                 <a
-                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150"
+                  className="px-3 py-1 rounded-full outline-none hover:bg-white hover:text-black transition-all duration-150 text-white"
                   href="#contact"
+                  data-slide="right"
                 >
                   Contact
                 </a>
               </div>
+              <button
+                className="block md:hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-pink-700"
+                onClick={handleHamburger}
+              >
+                <div className=" w-5 h-1 bg-white mb-1"></div>
+                <div className=" w-5 h-1 bg-white mb-1"></div>
+                <div className=" w-5 h-1 bg-white mb-1"></div>
+              </button>
             </div>
           </nav>
 
@@ -66,20 +99,26 @@ export default function Home() {
               id="about"
               className="flex justify-center items-start rounded-md overflow-hidden isolate relative after:absolute backdrop-blur-[1rem] after:inset-0 after:bg-black after:opacity-30 bg-transparent after:z-[-1]"
             >
-              <div className="img aspect-[9/12] h-[20rem]">
+              <div className="img aspect-[9/12] h-[20rem] ">
                 <img
                   src="/foto_pelajar.jpg"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="content px-6 py-4 h-[20%] flex flex-col justify-start w-full">
-                <h1 className="text-2xl font-normal tracking-[1px] uppercase mb-2">
+                <h1
+                  data-slide="right"
+                  className="text-2xl font-normal tracking-[1px] uppercase mb-2 text-white"
+                >
                   About Me
                 </h1>
-                <p className="text-sm font-light tracking-[2px] mb-6 border-l-2 border-pink-400 pl-4">
+                <p
+                  className="text-sm font-light tracking-[2px] mb-6 border-l-2 border-pink-400 pl-4 text-white"
+                  data-slide="right"
+                >
                   PROJECT CV - NEXTJS
                 </p>
-                <p>
+                <p className="text-white" data-slide="right">
                   I am Harris, a 16 year old student living in Denpasar. I
                   started learning coding when I was in high school. I'm
                   learning to make websites and make a simple Memory Game with
@@ -92,94 +131,193 @@ export default function Home() {
           </div>
         </header>
 
-        <section id="project">
-          <div className="parent">
-            <div className="flex flex-row gap-96 mt-6 ml-5 mr-5 border-b-2 border-[#80E3FF]">
-              <div className="project-items flex-col">
-                <span className="text-[#80E3FF] text-4xl font-bold">
-                  Projects
-                </span>
-                <br />
-                <br />
+        <div className="main">
+          <section id="resume">
+            <div className="container">
+              <div className="heading grid place-items-center mb-10">
+                <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
+                  RESUME
+                </h1>
+              </div>
+              <div className="content w-full grid place-items-center">
+                <Swiper
+                  className="w-full aspect-[16/9]"
+                  modules={[Navigation, Autoplay, Pagination]}
+                  autoplay={{ delay: 5000 }}
+                  navigation={true}
+                  pagination={true}
+                >
+                  <SwiperSlide className="w-[50%]">
+                    <div className="card relative isolate px-10 bg-pink-900 w-full h-full py-6 flex flex-col">
+                      <h2 className="font-medium text-4xl mb-2">
+                        SD ANAK EMAS DENPASAR
+                        <sub className="ml-2 text-neutral-300 text-base">
+                          2012 - 2018
+                        </sub>
+                      </h2>
+                      <p className="text-medium font-light text-[#D4D4D4]">
+                        Jln. Buana Raya 99X, Denpasar Barat - Graduated
+                      </p>
+                      <p className="mt-6 text-lg font-normal"></p>
+                      <img
+                        src="/sd.jpg"
+                        className="absolute opacity-50 brightness-[.2] after:absolute after:inset-0 after:bg-black after:opacity-75 inset-0 z-[-2]"
+                        alt=""
+                      />
+                    </div>
+                  </SwiperSlide>
 
-                <div className="project-container">
-                  <div className="project flex">
-                    <img
-                      src="/snake.png"
-                      alt="snake"
-                      className=" w-[450px] h-[260px]"
-                    />
-                    <span className="font-medium text-[#6E6D6D] text-1xl indent-0  p-4">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Mollitia blanditiis dolorem eos explicabo, alias provident
-                      quod, <br />
-                      tempora sunt commodi officia voluptatem excepturi
-                      corporis, architecto necessitatibus id praesentium vel
-                      distinctio in!
-                    </span>
+                  <SwiperSlide className="w-[50%]">
+                    <div className="card relative isolate px-10 bg-pink-900 w-full h-full py-6 flex flex-col">
+                      <h2 className="font-medium text-4xl mb-2">
+                        SMP NEGRI 1 KAUMAN
+                        <sub className="ml-2 text-neutral-300 text-base">
+                          2018 - 2021
+                        </sub>
+                      </h2>
+                      <p className="text-medium font-ligh text-[#D4D4D4]">
+                        Jln. Soekarno Hatta. Kauman, Tulungagung - Graduated
+                      </p>
+                      <p className="mt-6 text-lg font-normal"></p>
+                      <img
+                        src="/smp.jpg"
+                        className="absolute opacity-50 brightness-[.2] after:absolute after:inset-0 after:bg-black after:opacity-75 inset-0 z-[-2]"
+                        alt=""
+                      />
+                    </div>
+                  </SwiperSlide>
+
+                  <SwiperSlide className="w-[50%]">
+                    <div className="card relative isolate px-10 bg-pink-900 w-full h-full py-6 flex flex-col">
+                      <h2 className="font-medium text-4xl mb-2">
+                        SMK TI BALI GLOBAL DENPASAR
+                        <sub className="ml-2 text-neutral-300 text-base">
+                          2021 - ?
+                        </sub>
+                      </h2>
+                      <p className="text-medium font-light text-[#D4D4D4]">
+                        Jln. Tukad Citarum No.44, Denpasar Selatan
+                      </p>
+                      <p className="mt-6 text-lg font-normal"></p>
+                      <img
+                        src="/smk.jpg"
+                        className="absolute opacity-50 brightness-[.2] after:absolute after:inset-0 after:bg-black after:opacity-75 inset-0 z-[-2]"
+                        alt=""
+                      />
+                    </div>
+                  </SwiperSlide>
+                </Swiper>
+              </div>
+            </div>
+          </section>
+
+          <section id="project" className="">
+            <div className="heading grid place-items-center mb-10 pt-12">
+              <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
+                PROJECT
+              </h1>
+              <div className="flex relative phone:flex-col flex-row justify-center gap-[70px] pt-8">
+                <img
+                  src="snake.png"
+                  alt="snake"
+                  className=" w-[390px] h-[310px]"
+                />
+                <img src="sahara.png" alt="snake" className=" w-[390px] " />
+                <img src="snake.png" alt="snake" className=" w-[390px]" />
+              </div>
+              <div className="flex flex-row justify-center gap-[140px] ml-[180px] phone:top-full phone:translate-y-[90%] phone:absolute phone:mt-0 mt-[-80px] phone:flex-col">
+                <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl">
+                  <div className=" p-3 indent-2">
+                    <h1 className="text-pink-100 font-semibold]">Snake Game</h1>
+                    <p>
+                      {" "}
+                      This is my first game project. I made this game with
+                      Javascript Phaser.
+                    </p>
                   </div>
-                  <br />
-                  <div className="project flex mb-6">
-                    <img
-                      src="/sahara.png "
-                      alt="sahara"
-                      className=" w-[450px] h-[260px]"
-                    />
-                    <span className="font-medium text-[#6E6D6D] text-1xl inset-0 p-4">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      A consequuntur quae laudantium amet nam possimus iure
-                      maxime eos eum, eius iste alias. Iure natus sunt harum
-                      aliquam fugiat? Alias, explicabo!
-                    </span>
+                </div>
+                <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl opacity-18 ">
+                  <div className="p-3 indent-2">
+                    <h1 className="text-pink-100 font-semibold">
+                      Sahara Desert
+                    </h1>
+                    <p>
+                      so this is the website that I made with my friend. I made
+                      this project because this is an assignment from school. So
+                      on this website there is various information about the
+                      Sahara Desert.
+                    </p>
+                  </div>
+                </div>
+                <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl opacity-">
+                  <div className="p-3 indent-2">
+                    <h1 className="text-pink-100 font-semibold">project</h1>
+                    {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloribus velit cum quis atque autem odio iusto nam rem mollitia, voluptas asperiores dolor sint dignissimos aliquam exercitationem sequi impedit ipsum!</p> */}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="contact h-[90vh]">
-          <div className="flex flex-row gap-96 ml-5 mr-5 mt-6">
-            <span className=" text-[#80E3FF] text-4xl font-bold ">Contact</span>
-            <br />
-            <br />
-            <div className="form-container">
-              <div className="input-container">
-                <div className="form-input">
-                  <input type="text" className="input-item" name="name" />
-                  <label htmlFor="name">Name</label>
-                </div>
-              </div>
-              <div className="input-container">
-                <div className="form-input">
-                  <input type="text" className="input-item" name="city" />
-                  <label htmlFor="city">City</label>
-                </div>
-              </div>
-              <div className="">
-                <div className="">
-                  <input type="email" className="" name="email" />
-                  <label htmlFor="email"></label>
-                </div>
-              </div>
-              <div className="">
-                <div className="">
-                  <textarea name="message" id="" cols="52" rows="8"></textarea>
-                  <label htmlFor="message" className="">
-                    Message
-                  </label>
-                </div>
+          <section id="contact">
+            <div className="heading grid place-items-center mb-10">
+              <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
+                CONTACT
+              </h1>
+
+              <p className="text-white pt-5 text-xl">
+                Please feel free when contact me
+              </p>
+              <div className="pt-6 bg-pink-800 m-6 rounded-xl  px-7 py-7 ">
+                <form
+                  action="https://formsubmit.co/acmadharris225@gmail.com"
+                  method="post"
+                  autoComplete="off"
+                >
+                  <div className="flex justify-center gap-3 pb-2">
+                    <input
+                      type="text"
+                      name="Name"
+                      placeholder="Name"
+                      className="px-3 py-1 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300"
+                    />
+                    <input
+                      type="email"
+                      name="Email"
+                      placeholder="Email"
+                      className="px-3 py-1 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300"
+                    />
+                  </div>
+                  <textarea
+                    name="Message"
+                    id=""
+                    rows="10"
+                    placeholder="Message"
+                    className=" w-full pl-3 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300 py-2"
+                  ></textarea>
+                  <div className="flex justify-end mt-2 gap-3">
+                    <input
+                      type="submit"
+                      className="border-pink-900 rounded-sm outline-none  text-black bg-white hover:cursor-pointer hover:bg-neutral-00 px-5 py-1 hover:text-black transition-all duration-150"
+                    />
+                    <input
+                      type="reset"
+                      className="border-pink-900 rounded-sm outline-none text-black bg-white hover:cursor-pointer hover: px-5 py-1 hover:text-black transition-all duration-150"
+                    />
+                  </div>
+                  <input type="hidden" name="_captcha" value="false"></input>
+                </form>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <footer
-          className="h-16 md-m:text-white shadow-md bg-[#80E3FF] border-t z-20 border border-neutral-400 grid place-items-center"
-          id="footer"
+          className="h-16 md-m:text-white shadow-md bg-pink-900 border-t z-20 border border-neutral-400 grid place-items-center"
+          id="footer "
         >
           <div className="container footer__container flex justify-center items-center font-normal opacity-75 text-sm">
-            <p className=" text-black">
+            <p className=" text-white">
               Copyright © 2023 Harris . All rights reserved
             </p>
           </div>
@@ -189,6 +327,9 @@ export default function Home() {
             </a>
             <a href="mailto:acmadharris225@gmail.com">
               <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="http://wa.me/6285328269823" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
             </a>
           </div>
         </footer>
