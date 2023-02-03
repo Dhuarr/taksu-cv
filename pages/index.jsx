@@ -328,7 +328,7 @@ export default function Home() {
             <a href="mailto:acmadharris225@gmail.com">
               <i class="fa-regular fa-envelope"></i>
             </a>
-            <a href="http://wa.me/6285328269823" target="_blank">
+            <a href="http://wa.me/6285328269823" target="_blank" rel="noreferrer">
               <i class="fa-brands fa-whatsapp"></i>
             </a>
           </div>
