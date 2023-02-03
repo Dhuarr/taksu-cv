@@ -120,7 +120,7 @@ export default function Home() {
                 </p>
                 <p className="text-white" data-slide="right">
                   I am Harris, a 16 year old student living in Denpasar. I
-                  started learning coding when I was in high school. I'm
+                  started learning coding when I was in high school. I&apos; m
                   learning to make websites and make a simple Memory Game with
                   my own code. Since then, I became more and more interested and
                   started learning more stuffs, for example Javascript Games
