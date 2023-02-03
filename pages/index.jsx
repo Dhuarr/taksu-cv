@@ -45,7 +45,9 @@ export default function Home() {
           <div className="bg-pink-900 h-[60%] absolute left-0 top-0 right-0 z-[-1]"></div>
           <nav className="w-full absolute top-0 phone:m">
             <div className="container py-3 isolate  w-full flex justify-between items-center relative">
-              <div className="text-white text-xl font-regular phone:pl-4">Harris</div>
+              <div className="text-white text-xl font-regular phone:pl-4">
+                Harris
+              </div>
 
               <div
                 className={`nav__items  phone:z-[-1] transition-all duration-500 flex gap-2 phone:w-full phone:absolute left-0 right-0 top-0 phone:flex-col px-4 ${
@@ -212,11 +214,11 @@ export default function Home() {
           </section>
 
           <section id="project" className="">
-            <div className="heading grid place-items-center mb-10 pt-12">
+            <div className="heading grid place-items-center mb-10 z-[10] pt-12">
               <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
                 PROJECT
               </h1>
-              <div className="flex relative phone:flex-col flex-row justify-center gap-[70px] pt-8">
+              <div className="flex relative phone:flex-col isolate flex-row justify-center gap-[70px] pt-8">
                 <img
                   src="snake.png"
                   alt="snake"
@@ -225,7 +227,7 @@ export default function Home() {
                 <img src="sahara.png" alt="snake" className=" w-[390px] " />
                 <img src="snake.png" alt="snake" className=" w-[390px]" />
               </div>
-              <div className="flex flex-row justify-center gap-[140px] ml-[180px] phone:top-full phone:translate-y-[90%] phone:absolute phone:mt-0 mt-[-80px] phone:flex-col">
+              <div className="flex flex-row justify-center translate-y-[100%] absolute z-[1000] gap-[140px] ml-[180px] phone:top-full phone:translate-y-[90%] phone:mt-0 mt-[-80px] phone:flex-col">
                 <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl">
                   <div className=" p-3 indent-2">
                     <h1 className="text-pink-100 font-semibold]">Snake Game</h1>
@@ -259,7 +261,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="contact">
+          <section id="contact" className="mt-40">
             <div className="heading grid place-items-center mb-10">
               <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
                 CONTACT
@@ -328,7 +330,11 @@ export default function Home() {
             <a href="mailto:acmadharris225@gmail.com">
               <i class="fa-regular fa-envelope"></i>
             </a>
-            <a href="http://wa.me/6285328269823" target="_blank" rel="noreferrer">
+            <a
+              href="http://wa.me/6285328269823"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i class="fa-brands fa-whatsapp"></i>
             </a>
           </div>
