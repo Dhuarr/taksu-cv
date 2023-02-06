@@ -38,12 +38,12 @@ export default function Home() {
       </Head>
 
       <main
-        className={`${styles.main}  main overflow-x-hidden`}
+        className={`${styles.main} overflow-x-hidden  main max-w-screen`}
         style={poppins.style}
       >
         <header className="min-h-screen relative isolate w-full grid place-items-center">
           <div className="bg-pink-900 h-[60%] absolute left-0 top-0 right-0 z-[-1]"></div>
-          <nav className="w-full absolute top-0 phone:m">
+          <nav className="w-full absolute top-0 overflow-visible z-[999]">
             <div className="container py-3 isolate  w-full flex justify-between items-center relative">
               <div className="text-white text-xl font-regular phone:pl-4">
                 Harris
@@ -99,12 +99,12 @@ export default function Home() {
           <div className="container grid place-items-center">
             <div
               id="about"
-              className="flex justify-center items-start rounded-md overflow-hidden isolate relative after:absolute backdrop-blur-[1rem] after:inset-0 after:bg-black after:opacity-30 bg-transparent after:z-[-1]"
+              className="flex phone:flex-col justify-center items-start rounded-md overflow-hidden isolate relative after:absolute backdrop-blur-[1rem] after:inset-0 after:bg-black after:opacity-30 bg-transparent after:z-[-1] "
             >
-              <div className="img aspect-[9/12] h-[20rem] ">
+              <div className="img aspect-[9/12] h-[20rem] mt-0 phone:mx-auto">
                 <img
                   src="/foto_pelajar.jpg"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover phone:mt-4"
                 />
               </div>
               <div className="content px-6 py-4 h-[20%] flex flex-col justify-start w-full">
@@ -225,9 +225,9 @@ export default function Home() {
                   className=" w-[390px] h-[310px]"
                 />
                 <img src="sahara.png" alt="snake" className=" w-[390px] " />
-                <img src="snake.png" alt="snake" className=" w-[390px]" />
+                <img src="corona-buster.jpeg" alt="snake" className=" w-[390px] h-[310px] object-contain" />
               </div>
-              <div className="flex flex-row justify-center translate-y-[100%] absolute z-[1000] gap-[140px] ml-[180px] phone:top-full phone:translate-y-[90%] phone:mt-0 mt-[-80px] phone:flex-col">
+              <div className="flex flex-row justify-center items-center translate-y-[100%] absolute z-[1000] gap-[140px] ml-[180px] phone:mx-auto phone:top-full phone:translate-y-[68%] phone:mt-0 mt-[-80px] phone:flex-col">
                 <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl">
                   <div className=" p-3 indent-2">
                     <h1 className="text-pink-100 font-semibold]">Snake Game</h1>
@@ -251,17 +251,17 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl opacity-">
+                <div className="w-[310px] h-[200px] bg-pink-900 rounded-2xl text-sm">
                   <div className="p-3 indent-2">
-                    <h1 className="text-pink-100 font-semibold">project</h1>
-                    {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloribus velit cum quis atque autem odio iusto nam rem mollitia, voluptas asperiores dolor sint dignissimos aliquam exercitationem sequi impedit ipsum!</p> */}
+                    <h1 className="text-pink-100 font-semibold">Corona Buster</h1>
+                    <p>Corona Buster is the name of this game so the goal of this game is the same as the title. Just like the snake game, corona buster also uses Javascript Phaser. The time of making this game is quite long it took several weeks to finish this game.</p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section id="contact" className="mt-40">
+          <section id="contact" className="mt-60 w-full">
             <div className="heading grid place-items-center mb-10">
               <h1 className="text-4xl border-b-4 text-pink-100 border-pink-600 font-semibold tracking-[1px] text-center">
                 CONTACT
@@ -270,43 +270,48 @@ export default function Home() {
               <p className="text-white pt-5 text-xl">
                 Please feel free when contact me
               </p>
-              <div className="pt-6 bg-pink-800 m-6 rounded-xl  px-7 py-7 ">
+              <div data-animate className="form relative isolate group/animate">
+                <h2 className="text-2xl flex flex-col justify-start items-center font-normal text-primary-300 text-center">
+                  Want to know more about me?
+                </h2>
                 <form
-                  action="https://formsubmit.co/acmadharris225@gmail.com"
-                  method="post"
-                  autoComplete="off"
+                  className="flex mt-4 flex-col items-center justify-start max-w-[40rem] mx-auto gap-4 p-2"
+                  action="https://formsubmit.co/acmadharris225@gmail.com" method="post"
                 >
-                  <div className="flex justify-center gap-3 pb-2">
-                    <input
-                      type="text"
-                      name="Name"
-                      placeholder="Name"
-                      className="px-3 py-1 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300"
-                    />
-                    <input
-                      type="email"
-                      name="Email"
-                      placeholder="Email"
-                      className="px-3 py-1 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300"
-                    />
+                  <div className="form__group flex phone:flex-col gap-4 w-full">
+                    <div className={`group/input w-full`}>
+                      <input
+                        className={` w-full px-3 py-2 border-2 bg-white bg-opacity-20 backdrop-blur-sm border-neutral-300 transition-all duration-100 focus:border-primary-400 outline-none text-white [&:not(:placeholder-shown):invalid]:border-red-500`}
+                        type="Name" placeholder="Your Name" name="Name" autoComplete="off"
+                      />
+                      <p className="group-[&:has(input:not(:placeholder-shown):invalid)]/input:block hidden text-red-500 text-sm font-light bg-red-500 bg-opacity-[.1] opacity-75 py-1 px-2 border mt-1 rounded-sm border-red-500">
+                        Dhuarr
+                      </p>
+                    </div>
+
+                    <div className={`group/input w-full`}>
+                      <input
+                        className={` w-full px-3 py-2 border-2 bg-white bg-opacity-20 backdrop-blur-sm border-neutral-300 transition-all duration-100 focus:border-primary-400 outline-none text-white  [&:not(:placeholder-shown):invalid]:border-red-500`}
+                        type="Name" placeholder="Your Email" name="Email" autoComplete="off"
+                      />
+                      <p className="group-[&:has(input:not(:placeholder-shown):invalid)]/input:block hidden text-red-500 text-sm font-light bg-red-500 bg-opacity-[.1] opacity-75 py-1 px-2 border mt-1 rounded-sm border-red-500">
+                        Dhuarr
+                      </p>
+                    </div>
                   </div>
                   <textarea
+                    required
                     name="Message"
-                    id=""
-                    rows="10"
-                    placeholder="Message"
-                    className=" w-full pl-3 border-4 border-pink-900 rounded-sm outline-none text-black hover:bg-gray-300 py-2"
+                    cols={30}
+                    rows={5}
+                    placeholder="Your Message"
+                    className="w-full px-3 py-2 border-2 bg-white bg-opacity-20 backdrop-blur-sm border-neutral-300 transition-all duration-100 focus:border-primary-400 outline-none text-white  [&:not(:placeholder-shown):invalid]:border-red-500" 
                   ></textarea>
-                  <div className="flex justify-end mt-2 gap-3">
-                    <input
-                      type="submit"
-                      className="border-pink-900 rounded-sm outline-none  text-black bg-white hover:cursor-pointer hover:bg-neutral-00 px-5 py-1 hover:text-black transition-all duration-150"
-                    />
-                    <input
-                      type="reset"
-                      className="border-pink-900 rounded-sm outline-none text-black bg-white hover:cursor-pointer hover: px-5 py-1 hover:text-black transition-all duration-150"
-                    />
-                  </div>
+                  
+                  
+                  <button className=" border-2 border-neutral-300 text-gray-400 bg-[#ffffff33] px-4 py-2 w-full" type="submit">
+                  Send Message
+                  </button>
                   <input type="hidden" name="_captcha" value="false"></input>
                 </form>
               </div>
